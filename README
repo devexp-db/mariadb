@@ -1,1 +1,6 @@
-something
+This repository serve as developement ground for MariaDB package maintainers in the Fedora project.
+
+The branches here should be named as follows:
+  main branches :                  same name as in Fedora                       f25
+  developement of new version :    "main-branch-name"-"target-version"          f25-10.2.5
+  SCL :                            "main-branch-name"-SCL-"target-version"      f25-SCL-10.3.0
