@@ -1,7 +1,14 @@
 This repository serve as developement ground for MariaDB package maintainers in the Fedora project.
 
-The branches here should be named as follows:
+It can be accessed here:
+src.fedoraproject.org/rpms/mariadb
 
-  main branches :                same name as in Fedora                      f25
-  developement of new version :  "target-version"-"main-branches-names"      10.2.5-f24f25f26
-  SCL :                          SCL-"target-version"-"main-branches-names"  SCL-10.3.0-f27
+------------
+
+TODO:
+
+<where>		<what>			<branch>
+
+f25, f26	Update to 10.1.29	10.1.29
+	- CMAKE error: "Performing Test PCRE_STACK_SIZE_OK - Failed"
+	- related file: "mariadb-10.1.29/cmake/pcre.cmake"
