@@ -5,14 +5,26 @@ src.fedoraproject.org/rpms/mariadb
 
 ------------
 
-### TODO:
+TODO:
 
 <where>		<what>					<branch>	<bugzilla>
 
-##### f25, f26	Update to 10.1.29			10.1.29		-
+f25, f26	Update to 10.1.29			10.1.29		-
   - CMAKE error: "Performing Test PCRE_STACK_SIZE_OK - Failed"
   - related file: "mariadb-10.1.29/cmake/pcre.cmake"
 
-###### f26 -> f27	MDB doesn't start after update		-		[1515779](https://bugzilla.redhat.com/show_bug.cgi?id=1515779); [1483331#c13](https://bugzilla.redhat.com/show_bug.cgi?id=1483331#c13)
+f26 -> f27	MDB doesn't start after update		-		1515779; 1483331#c13
   - Caused by location update of PID file; user custom server configuration could need an update
 
+Rawhide		Nagios plugins FTBFS with C/C
+  - The package maintainer claims, that in his buildroot, Rawhide C/C devel package is empty
+
+Rawhide		CONC/ODBC not in latest version
+  - C/ODBC FTBFS in latest upstream version, because they linked it against not-yet-released C/C version
+  - need to wait to 3.0.3 version of both C/C and C/ODBC
+
+f27		GSSAPI client is broken					1514820
+  - after and update to f27, GSSAPI client plugin does no longer work
+
+f27		Fail to start server: incompatible OpenSSL version	1473756
+ - caused by dracut-fips-046-5.fc27.x86_64 ??
