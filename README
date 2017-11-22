@@ -5,14 +5,14 @@ src.fedoraproject.org/rpms/mariadb
 
 ------------
 
-TODO:
+*TODO:*
 
 <where>		<what>					<branch>	<bugzilla>
 
-f25, f26	Update to 10.1.29			10.1.29		-
-	- CMAKE error: "Performing Test PCRE_STACK_SIZE_OK - Failed"
-	- related file: "mariadb-10.1.29/cmake/pcre.cmake"
+*f25, f26	Update to 10.1.29			10.1.29		-*
+  - CMAKE error: "Performing Test PCRE_STACK_SIZE_OK - Failed"
+  - related file: "mariadb-10.1.29/cmake/pcre.cmake"
 
-f26 -> f27	MDB doesn't start after update		-		1515779; 1483331#c13
-	- Caused by location update of PID file; user custom server configuration could need an update
+*f26 -> f27	MDB doesn't start after update		-		1515779; 1483331#c13*
+  - Caused by location update of PID file; user custom server configuration could need an update
 
