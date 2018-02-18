@@ -251,7 +251,7 @@ index 0ff49a2c427..ed1c82dbac6 100644
  #include <openssl/evp.h>
  #include <openssl/aes.h>
  #include <openssl/err.h>
- #include <openssl/rand.h>
+ #include <openssl/rand.h> 
 -
  #endif
 -#include <my_crypt.h>
@@ -444,19 +444,6 @@ index 0ff49a2c427..ed1c82dbac6 100644
    return res1 ? res1 : res2;
  }
  
-@@ -350,12 +332,6 @@ int my_random_bytes(uchar* buf, int num)
- 
- int my_random_bytes(uchar *buf, int num)
- {
--  /*
--    Unfortunately RAND_bytes manual page does not provide any guarantees
--    in relation to blocking behavior. Here we explicitly use SSLeay random
--    instead of whatever random engine is currently set in OpenSSL. That way
--    we are guaranteed to have a non-blocking random.
--  */
-   RAND_METHOD *rand = RAND_OpenSSL();
-   if (rand == NULL || rand->bytes(buf, num) != 1)
-     return MY_AES_OPENSSL_ERROR;
 diff --git a/mysys_ssl/my_md5.cc b/mysys_ssl/my_md5.cc
 index 02c01dd7148..0105082b7e1 100644
 --- a/mysys_ssl/my_md5.cc
@@ -714,14 +701,6 @@ diff --git a/mysys_ssl/yassl.cc b/mysys_ssl/yassl.cc
 index 9e6f90d8d77..aa5631f2ab8 100644
 --- a/mysys_ssl/yassl.cc
 +++ b/mysys_ssl/yassl.cc
-@@ -24,7 +24,6 @@
- 
- #include <openssl/ssl.h>
- #include "aes.hpp"
--#include <my_sys.h>
- 
- using yaSSL::yaERR_remove_state;
- 
 @@ -45,7 +44,6 @@ typedef struct
    int buf_len;
    int final_used;

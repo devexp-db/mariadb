@@ -235,11 +235,12 @@ index a0937a83e17..0ff49a2c427 100644
  
  #ifdef HAVE_YASSL
  #include "yassl.cc"
-@@ -26,43 +25,51 @@
+@@ -26,44 +25,51 @@
  #include <openssl/evp.h>
  #include <openssl/aes.h>
  #include <openssl/err.h>
-+#include <openssl/rand.h>
+-#include <openssl/rand.h>
++#include <openssl/rand.h> 
  
 -#ifdef HAVE_ERR_remove_thread_state
 -#define ERR_remove_state(X) ERR_remove_thread_state(NULL)
@@ -465,23 +466,6 @@ index a0937a83e17..0ff49a2c427 100644
    return res1 ? res1 : res2;
  }
  
-@@ -301,7 +347,6 @@ int my_random_bytes(uchar* buf, int num)
-   return MY_AES_OK;
- }
- #else
--#include <openssl/rand.h>
- 
- int my_random_bytes(uchar *buf, int num)
- {
-@@ -311,7 +356,7 @@ int my_random_bytes(uchar *buf, int num)
-     instead of whatever random engine is currently set in OpenSSL. That way
-     we are guaranteed to have a non-blocking random.
-   */
--  RAND_METHOD *rand = RAND_SSLeay();
-+  RAND_METHOD *rand = RAND_OpenSSL();
-   if (rand == NULL || rand->bytes(buf, num) != 1)
-     return MY_AES_OPENSSL_ERROR;
-   return MY_AES_OK;
 diff --git a/mysys_ssl/my_md5.cc b/mysys_ssl/my_md5.cc
 index 7139ea9b6ff..02c01dd7148 100644
 --- a/mysys_ssl/my_md5.cc
@@ -579,14 +563,6 @@ diff --git a/mysys_ssl/yassl.cc b/mysys_ssl/yassl.cc
 index 9717870fe26..9e6f90d8d77 100644
 --- a/mysys_ssl/yassl.cc
 +++ b/mysys_ssl/yassl.cc
-@@ -24,6 +24,7 @@
- 
- #include <openssl/ssl.h>
- #include "aes.hpp"
-+#include <my_sys.h>
- 
- using yaSSL::yaERR_remove_state;
- 
 @@ -75,12 +76,26 @@ static void EVP_CIPHER_CTX_init(EVP_CIPHER_CTX *ctx)
    ctx->final_used= ctx->buf_len= ctx->flags= 0;
  }

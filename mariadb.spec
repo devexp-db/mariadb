@@ -123,11 +123,11 @@
 # Make long macros shorter
 %global sameevr   %{epoch}:%{version}-%{release}
 %global compatver 10.1
-%global bugfixver 30
+%global bugfixver 31
 
 Name:             mariadb
 Version:          %{compatver}.%{bugfixver}
-Release:          2%{?with_debug:.debug}%{?dist}
+Release:          1%{?with_debug:.debug}%{?dist}
 Epoch:            3
 
 Summary:          A community developed branch of MySQL
@@ -1434,6 +1434,9 @@ fi
 %endif
 
 %changelog
+* Mon Feb 12 2018 Michal Schorm <mschorm@redhat.com> - 3:10.1.31-1
+- Rebase to 10.1.31 version
+
 * Thu Jan 25 2018 Michal Schorm <mschorm@redhat.com> - 3:10.1.30-2
 - Use downstream tmpfiles instead of the upstream one
   Related: #1538066
